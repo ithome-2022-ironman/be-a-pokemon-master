@@ -43,20 +43,18 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ## 內容大綱
 
-1. **EP01: 冒險啟程！前往博士研究所** 
-    > 以 Figma 進行專案項目的原型設計 (prototype)
-2. **EP02: 首次對戰！遭遇捕蟲少年**
-    > 以 NodeJS + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料
-3. **EP03: 驚心動魄！大牙狸的逆襲**
-    > 以 golang 進行 LINE ChatBot 開發
-4. **EP04: 一球超人！收集寶可夢圖鑑**
-    > 以 React + TypeScript 進行 LINE LIFF 的網頁開發
+<p align="center">
+    <img alt="以 Figma 進行專案項目的原型設計 (prototype)" src="./ep01.png" width="400" />
+</p>
 
-<br>
+<p align="center">
+    <img alt="以 NodeJS + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料" src="./ep02.png" width="400" />
+</p>
 
----
+<p align="center">
+    <img alt="以 golang 進行 LINE ChatBot 開發" src="./ep03.png" width="400" />
+</p>
 
-### 圖片來源
-
-1. 小火龍 ─ 
-2. 
+<p align="center">
+    <img alt="以 React + TypeScript 進行 LINE LIFF 的網頁開發" src="./ep04.png" width="400" />
+</p>
