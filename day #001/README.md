@@ -49,7 +49,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 在這次的鐵人賽的第一階段中，筆者會從最初的專案雛形的設計開始分享，如何透過 Figma 來製作出可複用的元件，並產出能夠互動的 prototype。
 
-第二階段，以 NodeJS 搭配 TypeScript 開發系列 web crawler 和串接 YouTube API 和 Twitter API 進行資料的收集，並將結構化的資料以 GitHub Pages 的方式存取，並會分享 npm package 的發布方式。
+第二階段，以 Node.js 搭配 TypeScript 開發系列 web crawler 和串接 YouTube API 和 Twitter API 進行資料的收集，並將結構化的資料以 GitHub Pages 的方式存取，並會分享 npm package 的發布方式。
 
 第三階段，介紹以 golang 開發 LINE ChatBot 的過程，並教學如何使用 Google Cloud Functions，佐以 GitHub Actions 達到自動化部署。
 
@@ -68,10 +68,10 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 <br><br>
 
 <p align="center">
-    <img alt="以 NodeJS + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料" src="./ep02.png" width="400" />
+    <img alt="以 Node.js + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料" src="./ep02.png" width="400" />
 </p>
 
-* Day 05: NodeJS + TypeScript 專案相關建置
+* Day 05: Node.js + TypeScript 專案相關建置
 * Day 06: 爬蟲設計入門班 ①: Pokemon GO 官方網站
 * Day 07: 爬蟲設計入門班 ②: LeekDuck 遊戲資料站
 * Day 08: 爬蟲設計入門班 ③: The Silph Road 遊戲資料站
