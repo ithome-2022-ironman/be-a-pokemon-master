@@ -87,11 +87,15 @@ main();
 yarn add node-html-parser
 ```
 
+> ![](../textures/notice.png) 是不是少了誰？ ![](../textures/notice.png)
+>
+> ---
+>
 > 眼尖的話可能會發現，在 `node-fetch` 時會需要額外安裝一個 `@types/node-fetch` package，但 `node-html-parser` 卻不用。
 >
 > 這是因為不同的 npm package 可能使用 JavaScript 或 TypeScript 來開發，倘若 TS 專案引用了 JS package 將會引發錯誤。
 >
-> 而 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) 將社群中主流的 JS package 們編寫了對應的 declaration files，好讓 TS 專案也能夠順利使用 JS 函式庫的同時，享受 TS 帶來的優勢。
+> 而 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) 將社群中較熱門的 JS package 們編寫了對應的 declaration files，好讓 TS 專案順利使用 JS 函式庫的同時，也同事享受 TS 帶來的優勢。
 
 在前一章中，我們觀察到能夠使用 class name `blogList__post` 查詢到每一則卡片節點：
 
@@ -163,7 +167,9 @@ const posts: Post[] = postItems.map((postItem) => ({
 }
 ```
 
-> 行末出現了一個 `!` 符號，它的用途是？
+> ![](../textures/notice.png) 行末出現了一個 `!` 符號，它的用途是？ ![](../textures/notice.png)
+>
+> ---
 >
 > `getAttribute()` 除了回傳型別 `string` 之外，還有 `undefined` 的可能性，即為 union type 的 `string | undefined`。
 >

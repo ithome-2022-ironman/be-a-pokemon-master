@@ -8,37 +8,34 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 
 ## Outline
 
-* Introduction (1 day)
-* Prototyping (3 days)
-  * Figma
-    * components
-* data sources
-  * web crawler: NodeJS + TypeScript (4 days)
-    * Easy: `data-pokemongolive`
-    * Medium: `data-leekduck`, `data-thesilphroad`
-  * CI/CD (1 days)
-    * GitHub Actions
-      * Auto deployment on GitHub Pages
-      * keepalive-workflow
-  * web crawler: using puppeteer (1 day)
-    * `data-bulbapedia`
-  * YouTube API (1 day)
-    * `data-youtuber`
-  * Twitter API (1 day)
-    * `data-tweets`
-  * publish npm package (1 day)
-    * `pmgo-pokedex`
-* LINE chatbot (5 days)
-  * LINE console settings (Official account)
-  * golang + LINE Messaging API SDK
-    * `line-chatbot`
-    * ngrok
-  * Google Cloud Functions
-  * RichMenu
-    * `line-chatbot-richmenu`
-* LINE LIFF - pokedex (5 days)
-  * LINE console settings
-  * React + TypeScript
-    * `willow-pokedex`
-    * routing
-    * hooks
+* [x] [Day 01: 2022 年 09 月 ─ 放送開始](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23001/README.md)
+* [ ] [Day 02: 紙上談兵](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23002/README.md)
+* [ ] [Day 03: Figma 入門班 ①: 製作首個元件](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23003/README.md)
+* [ ] [Day 04: Figma 入門班 ②: 製作原型設計](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23004/README.md)
+* [ ] [Day 05: Node.js + TypeScript 專案相關建置](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23005/README.md)
+* [x] [Day 06: 爬蟲設計入門班 ①: Pokemon GO 官方網站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23006/README.md)
+* [ ] [Day 07: 爬蟲設計入門班 ②: LeekDuck 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23007/README.md)
+* [ ] [Day 08: 爬蟲設計入門班 ③: The Silph Road 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23008/README.md)
+* [ ] [Day 10: 爬蟲設計入門班 ④: 使用 Puppeteer 進行爬蟲作業](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23010/README.md)
+* [ ] [Day 09: GitHub Actions 部署 GitHub Pages](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23009/README.md)
+* [ ] [Day 11: 串接 YouTube API 取得影片資料](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23011/README.md)
+* [ ] [Day 12: 串接 Twitter API 取得推文資料](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23012/README.md)
+* [ ] [Day 13: 製作 JS package，並發布到 npm](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23013/README.md)
+* [ ] [Day 14: LINE Message API 介紹與首次設定](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23014/README.md)
+* [ ] [Day 15: golang 專案建置與 LINE Messaging API SDK](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23015/README.md)
+* [ ] [Day 16: LINE Messaging API 入門班 ①: 搭配 ngrok 開發，發送首個 Message](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23016/README.md)
+* [ ] [Day 17: LINE Messaging API 入門班 ②: 發送 Flex Message](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23017/README.md)
+* [ ] [Day 18: LINE Messaging API 入門班 ③: 以圖文選單進行互動](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23018/README.md)
+* [ ] [Day 19: 並配合 VSCode debugging 設定斷點進行除錯](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23019/README.md)
+* [ ] [Day 20: 部署至 Google Cloud Functions 並結合自動化部署](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23020/README.md)
+* [ ] [Day 21: LINE LIFF 介紹](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23021/README.md)
+* [ ] [Day 22: React + TypeScript 專案相關建置](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23022/README.md)
+* [ ] [Day 23: React 入門班 ①: React 的生命週期](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23023/README.md)
+* [ ] [Day 24: React 入門班 ②: React Component](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23024/README.md)
+* [ ] [Day 25: React 入門班 ③: React Router](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23025/README.md)
+* [ ] [Day 26: React 入門班 ④: React Hooks](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23026/README.md)
+* [ ] [Day 27: React 入門班 ⑤: Styled Components](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23027/README.md)
+* [ ] [Day 28: 預留做為 buffer](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23028/README.md)
+* [ ] [Day 29: 預留做為 buffer](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23029/README.md)
+* [ ] [Day 30: 賽末心得](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23030/README.md)
+
