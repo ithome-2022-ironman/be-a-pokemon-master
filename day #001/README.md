@@ -24,8 +24,6 @@
 
 基於上述理由，萌生了此專案的開發念頭，希冀能夠將多方情報管道彙整為一，提供一個「不敢說是最全面，但絕對是最方便」的遊戲情報提供管道。
 
-<br>
-
 ## Pokemon GO 維羅博士
 
 LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆者抱著能夠獲得百名訓練家的共鳴就心滿意足，萬萬沒想到上線第一個月內達到 4,000 名好友，至今已逾萬名好友加入。過程中收到許許多多來自各方訓練家的建議與反饋，目前仍在持續更新及優化當中。
@@ -35,15 +33,9 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 「Pokemon GO 維羅博士」收集國內外熱心玩家所彙整的情報，透過 web crawler 與社群平台 APIs 取得原始資料並將其結構化儲存，再利用 LINE ChatBot 將這些即時資訊提供給每位訓練家。
 
 ![](./features.png)
-<p align="center">
-    <i>目前聊天機器人有提供的功能一覽</i>
-</p>
-
-<br>
+*目前聊天機器人有提供的功能一覽*
 
 > 筆者認為工程師的核心價值就是「懶」，而上述提及的功能除非來源資料結構改版，基本上是全自動化的即時更新。
-
-<br><br>
 
 ## 內容大綱
 
@@ -55,21 +47,17 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 第四階段，最後會使用 React 搭配 TypeScript 設計一個寶可夢圖鑑的網頁。
 
-<br>
+---
 
-<p align="center">
-    <img alt="以 Figma 進行專案項目的原型設計 (prototype)" src="./ep01.png" width="400" />
-</p>
+![以 Figma 進行專案項目的原型設計 (prototype)](./ep01.png)
 
 * Day 02: 紙上談兵
 * Day 03: Figma 入門班 ①: 製作首個元件
 * Day 04: Figma 入門班 ②: 製作原型設計
 
-<br><br>
+---
 
-<p align="center">
-    <img alt="以 Node.js + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料" src="./ep02.png" width="400" />
-</p>
+![以 Node.js + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料](./ep02.png)
 
 * Day 05: Node.js + TypeScript 專案相關建置
 * Day 06: 爬蟲設計入門班 ①: Pokemon GO 官方網站
@@ -81,11 +69,9 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 * Day 12: 串接 Twitter API 取得推文資料
 * Day 13: 製作 JS package，並發布到 npm
 
-<br><br>
+---
 
-<p align="center">
-    <img alt="以 golang 進行 LINE ChatBot 開發" src="./ep03.png" width="400" />
-</p>
+![以 golang 進行 LINE ChatBot 開發](./ep03.png)
 
 * Day 14: LINE Message API 介紹與首次設定
 * Day 15: golang 專案建置與 LINE Messaging API SDK
@@ -95,11 +81,9 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 * Day 19: 並配合 VSCode debugging 設定斷點進行除錯
 * Day 20: 部署至 Google Cloud Functions 並結合自動化部署
 
-<br><br>
+---
 
-<p align="center">
-    <img alt="以 React + TypeScript 進行 LINE LIFF 的網頁開發" src="./ep04.png" width="400" />
-</p>
+![以 React + TypeScript 進行 LINE LIFF 的網頁開發](./ep04.png)
 
 * Day 21: LINE LIFF 介紹
 * Day 22: React + TypeScript 專案相關建置
@@ -109,13 +93,8 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 * Day 26: React 入門班 ④: React Hooks
 * Day 27: React 入門班 ⑤: Styled Components
 
-<br>
+---
 
 * Day 28: 預留做為 buffer
 * Day 29: 預留做為 buffer
-
-<br>
-
 * Day 30: 賽末心得
-
-
