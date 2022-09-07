@@ -28,11 +28,11 @@
 
 LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆者抱著能夠獲得百名訓練家的共鳴就心滿意足，萬萬沒想到上線第一個月內達到 4,000 名好友，至今已逾萬名好友加入。過程中收到許許多多來自各方訓練家的建議與反饋，目前仍在持續更新及優化當中。
 
-![](./banner.png)
+![](/day%20%23001/banner.png)
 
 「Pokemon GO 維羅博士」收集國內外熱心玩家所彙整的情報，透過 web crawler 與社群平台 APIs 取得原始資料並將其結構化儲存，再利用 LINE ChatBot 將這些即時資訊提供給每位訓練家。
 
-> ![](./features.png)
+> ![](/day%20%23001/features.png)
 > *目前聊天機器人有提供的功能一覽*
 
 > 筆者認為工程師的核心價值就是「懶」，而上述提及的功能除非來源資料結構改版，基本上是全自動化的即時更新。
@@ -49,7 +49,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ---
 
-![以 Figma 進行專案項目的原型設計 (prototype)](./ep01.png)
+![以 Figma 進行專案項目的原型設計 (prototype)](/day%20%23001/ep01.png)
 
 * Day 02: 紙上談兵
 * Day 03: Figma 入門班 ①: 製作首個元件
@@ -57,7 +57,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ---
 
-![以 Node.js + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料](./ep02.png)
+![以 Node.js + TypeScript 開發網路爬蟲 (web crawler) 收集網路資料](/day%20%23001/ep02.png)
 
 * Day 05: Node.js + TypeScript 專案相關建置
 * Day 06: 爬蟲設計入門班 ①: Pokemon GO 官方網站
@@ -71,7 +71,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ---
 
-![以 golang 進行 LINE ChatBot 開發](./ep03.png)
+![以 golang 進行 LINE ChatBot 開發](/day%20%23001/ep03.png)
 
 * Day 14: LINE Message API 介紹與首次設定
 * Day 15: golang 專案建置與 LINE Messaging API SDK
@@ -83,7 +83,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ---
 
-![以 React + TypeScript 進行 LINE LIFF 的網頁開發](./ep04.png)
+![以 React + TypeScript 進行 LINE LIFF 的網頁開發](/day%20%23001/ep04.png)
 
 * Day 21: LINE LIFF 介紹
 * Day 22: React + TypeScript 專案相關建置

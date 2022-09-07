@@ -14,12 +14,18 @@
 
 ---
 
+## 快速導覽
+
+
+
+* tags: `nodejs`, `typescript`, `web-crawler`, `web-scraping`
+
 ## 一、Pokemon GO 官方網站
 
 首次的爬蟲入門，我們選擇一個容易上手的案例。試著從 Pokemon GO 的官方網站最新消息爬取資料，並將其結構化儲存。
 * https://pokemongolive.com/zh_hant/news
 
-![](./01.png)
+![](/day%20%23006/01.png)
 
 在最新消息列表中，我們要從各消息卡片中取得以下資訊：
 * 日期
@@ -31,7 +37,7 @@
 
 於 Google Chrome 對畫面右鍵 > **Inspect** 開啟 devtool 後，可以試著展開 **Elements** 分頁中的 DOM (Document Object Model) ，以找到畫面中的第一則消息卡片。
 
-![](./02.png)
+![](/day%20%23006/02.png)
 
 在畫面中可以看到 `<a>` 節點的單位正好是完整的一張消息卡片，同時可以觀察到每一張卡片都會帶有 `blogList__post` 的 class name。
 
@@ -42,7 +48,7 @@
 document.querySelectorAll('.blogList__post');
 ```
 
-![](./03.png)
+![](/day%20%23006/03.png)
 
 執行完畢後，能夠成功查詢到畫面上的 30 筆消息卡片的節點。
 
@@ -77,7 +83,7 @@ main();
 
 透過 `yarn start` 或 `ts-node src/index.ts` 執行。
 
-![](./04.png)
+![](/day%20%23006/04.png)
 
 ### 取得所有消息
 
@@ -87,7 +93,7 @@ main();
 yarn add node-html-parser
 ```
 
-> ![](../textures/notice.png) 是不是少了誰？ ![](../textures/notice.png)
+> ![](/textures/notice.png) 是不是少了誰？ ![](/textures/notice.png)
 >
 > ---
 >
@@ -167,7 +173,7 @@ const posts: Post[] = postItems.map((postItem) => ({
 }
 ```
 
-> ![](../textures/notice.png) 行末出現了一個 `!` 符號，它的用途是？ ![](../textures/notice.png)
+> ![](/textures/notice.png) 行末出現了一個 `!` 符號，它的用途是？ ![](/textures/notice.png)
 >
 > ---
 >

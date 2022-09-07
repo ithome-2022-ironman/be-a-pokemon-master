@@ -18,6 +18,8 @@
 
 經過前面幾天的爬蟲練習後，接著可以嘗試將爬蟲爬下的資料，放到 GitHub Pages 以靜態檔案的方式做存放，再搭配 GitHub Actions 設定排程定時進行重新爬取與更新。
 
+* tags: `github-actions`, `github-pages`, `ci-cd`
+
 ## 一、GitHub Pages
 
 在 GitHub 上提供了一個免費網頁代管服務 GitHub Pages，若分支名稱為 `gh-pages` 能夠將該分支的內容作為靜態檔案的伺服器。
@@ -35,7 +37,7 @@
 
 ### 2. 自動更新 GitHub Pages
 
-> ![](./github-action-deploy-to-github-pages.png)
+> ![](/day%20%23009/github-action-deploy-to-github-pages.png)
 > GitHub Action: [deploy-to-github-pages](https://github.com/marketplace/actions/deploy-to-github-pages)
 
 人工部署作業勞心勞力，像是部署這類反覆性工作就相當適合使用 CI/CD 來達成自動化，同時還能夠減少人為的疏失。
@@ -88,13 +90,13 @@ jobs:
 
 ### 3. 讓 workflow 永續運行
 
-> ![](./github-action-keepalive-workflow.png)
+> ![](/day%20%23009/github-action-keepalive-workflow.png)
 > GitHub Action: [keepalive-workflow](https://github.com/marketplace/actions/keepalive-workflow)
 
 當項目內沒有提交行為長達 60 天時，為了避免不活躍的專案項目的自動排程不斷運行，GitHub 偵測使用 cron 觸發的 workflow 便會自動停擺，使用者必須主動開啟延長運行的請求。
 
-> ![](./01.png)
-> *在不知情限制的狀況下，例行的排程默默地暫停*
+> ![](/day%20%23009/01.png)
+> *在不知情限制的狀況下，例行的排程被默默地暫停*
 
 此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 Action 來規避限制。
 

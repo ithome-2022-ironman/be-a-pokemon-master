@@ -14,6 +14,12 @@
 
 ---
 
+## 快速導覽
+
+在接下來的程式開發前，需要先行建置 Node.js 搭配 TypeScript 專案的初始化，會逐一解釋各步驟的理由及效果。
+
+* tags: `nodejs`, `typescript`
+
 ## 一、TBD
 
 後端語言、框架的選擇很多，而 Node.js 因為 JavaScript 語言特性緣故。
@@ -41,7 +47,7 @@ TBD
 yarn init -y
 ```
 
-> ![](../textures/notice.png) package.json ![](../textures/notice.png)
+> ![](/textures/notice.png) package.json ![](/textures/notice.png)
 >
 > ---
 >
@@ -60,7 +66,7 @@ yarn init -y
 yarn add -D typescript ts-node
 ```
 
-> ![](../textures/notice.png) `yarn.lock` 與 `node_modules` ![](../textures/notice.png)
+> ![](/textures/notice.png) `yarn.lock` 與 `node_modules` ![](/textures/notice.png)
 >
 > ---
 >
@@ -108,7 +114,7 @@ touch .gitignore
 筆者習慣使用 GitHub 所維護的 `.gitignore`，再下去做微調：
 * github/gitignore: https://github.com/github/gitignore/blob/main/Node.gitignore
 
-> ![](../textures/notice.png) 注意事項 ![](../textures/notice.png)
+> ![](/textures/notice.png) 注意事項 ![](/textures/notice.png)
 >
 > ---
 >
