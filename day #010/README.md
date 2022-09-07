@@ -21,7 +21,7 @@
 
 ## 一、GitHub Pages
 
-在 GitHub 上提供了一個免費網頁代管服務 GitHub Pages，若分支名稱為 `gh-pages` 能夠將該分支的內容作為靜態檔案的伺服器。
+在 GitHub 上提供了一個免費網頁代管服務 *GitHub Pages*，若分支名稱為 `gh-pages` 能夠將該分支的內容作為靜態檔案的伺服器。
 
 以前幾天的爬蟲程式為例，最終皆會在 `artifacts` 的路徑下產生對應的 JSON 檔案，只需要 checkout 到 `gh-pages`，並將 `artifacts` 路徑的檔案放入後提交後上傳即可。
 
