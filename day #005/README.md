@@ -16,9 +16,8 @@
 
 ## 快速導覽
 
-在接下來的程式開發前，需要先行建置 Node.js 搭配 TypeScript 專案的初始化，會逐一解釋各步驟的理由及效果。
-
-* tags: `nodejs`, `typescript`
+> 在接下來的程式開發前，需要先行建置 Node.js 搭配 TypeScript 專案的初始化，會逐一解釋各步驟的理由及效果。
+> * tags: `nodejs`, `typescript`
 
 ## 一、TBD
 

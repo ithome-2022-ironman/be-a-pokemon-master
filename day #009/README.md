@@ -16,9 +16,8 @@
 
 ## 快速導覽
 
-經過前面幾天的爬蟲練習後，接著可以嘗試將爬蟲爬下的資料，放到 GitHub Pages 以靜態檔案的方式做存放，再搭配 GitHub Actions 設定排程定時進行重新爬取與更新。
-
-* tags: `github-actions`, `github-pages`, `ci-cd`
+> 經過前面幾天的爬蟲練習後，接著可以嘗試將爬蟲爬下的資料，放到 GitHub Pages 以靜態檔案的方式做存放，再搭配 GitHub Actions 設定排程定時進行重新爬取與更新。
+> * tags: `github-actions`, `github-pages`, `ci-cd`
 
 ## 一、GitHub Pages
 

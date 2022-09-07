@@ -16,9 +16,7 @@
 
 ## 快速導覽
 
-
-
-* tags: `nodejs`, `typescript`, `web-crawler`, `web-scraping`
+> * tags: `nodejs`, `typescript`, `web-crawler`, `web-scraping`
 
 ## 一、Pokemon GO 官方網站
 
