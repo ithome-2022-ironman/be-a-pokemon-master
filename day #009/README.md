@@ -23,16 +23,27 @@
 
 在 GitHub 上提供了一個免費網頁代管服務 GitHub Pages，若分支名稱為 `gh-pages` 能夠將該分支的內容作為靜態檔案的伺服器。
 
-> TBD
+以前幾天的爬蟲程式為例，最終皆會在 `artifacts` 的路徑下產生對應的 JSON 檔案，只需要 checkout 到 `gh-pages`，並將 `artifacts` 路徑的檔案放入後提交後上傳即可。
+
+### 1. GitHub Pages 的潛規則
+
+因為 GitHub Pages 內建採用 Jekyll 作為文章、部落格的生成引擎，但此刻我們只作為靜態網站伺服器使用，必須在根目錄下新增 `.nojekyll` 檔案，內容留空即可，目的是為了告訴 GitHub 當前的 Pages 並非基於 Jekyll 所建構。
+
+```bash
+# 新增一空內容的文件 '.nojekyll'
+touch .nojekyll
+```
 
 ## 二、GitHub Actions
 
-在過去 GitHub 專案若要串接 CI/CD 的功能，必須導入如 *CircleCI*、*Travis CI* 等持續整合服務。2019 年 GitHub 發佈了 *GitHub Actions*，整體使用起來與 GitLab 自家發展的一條龍生態系 *GitLab CI/CD* 相當類似。不過當中最為之一亮的特色，開發者間能夠過 Marketplace 將 Actions 流通分享複用。
+在過去 GitHub 專案若要串接 CI/CD 的功能，必須導入如 *CircleCI*、*Travis CI* 等持續整合服務。2019 年 GitHub 發佈了 *GitHub Actions*，整體使用起來與 GitLab 自家發展的一條龍生態系 *GitLab CI/CD* 相當類似。不過當中最為之一亮的特色，開發者間能夠過 Marketplace 將 Actions 流通分享且複用，能夠節省非常多的時間。
 
 ### 1. Marketplace
 
-如先前我們使用的 npm packages 雷同，在 GitHub Marketplace 上有其他開發者分享的 Actions。
-* GitHub Marketplace: https://github.com/marketplace?type=actions
+如先前我們所使用的 npm packages 概念雷同，在 GitHub Marketplace 上有其他開發者分享的 Actions。
+
+> ![](/day%20%23009/github-markerplace.png)
+> [*GitHub Marketplace*](https://github.com/marketplace?type=actions) 上依照性質分類 Actions
 
 ### 2. 自動更新 GitHub Pages
 
@@ -94,7 +105,7 @@ jobs:
 
 當項目內沒有提交行為長達 60 天時，為了避免不活躍的專案項目的自動排程不斷運行，GitHub 偵測使用 cron 觸發的 workflow 便會自動停擺，使用者必須主動開啟延長運行的請求。
 
-> ![](/day%20%23009/01.png)
+> ![](/day%20%23009/gitlab-action-workflow-disable.png)
 > *在不知情限制的狀況下，例行的排程被默默地暫停*
 
 此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 Action 來規避限制。
@@ -118,3 +129,18 @@ jobs:
 ```
 
 根據 **keepalive-workflow** 的文件提到，當 repo 內的最後一次 commit 時間已逾 50 天以上，此 action 將會創建一個 empty commit 保持專案的活躍狀態，以達到無限期的 workflow 運行。
+
+## 效果預覽
+
+在 GitHub 的分支預覽，呈現效果如下：
+
+![](/day%20%23009/gh-pages-preview-on-github.png)
+
+並且圖片中的檔案能夠透過以下網址進行訪問：
+
+``` bash
+# https://<組織或用戶名稱>.github.io/<repo 名稱>/<檔案的相對路徑>
+https://pmgo-professor-willow.github.io/data-bulbapedia/communityDays.json
+```
+
+在後續的主題，將會以這些 GitHub Pages 上的 JSON 檔案作為資料源。
