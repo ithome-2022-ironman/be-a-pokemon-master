@@ -144,3 +144,7 @@ https://pmgo-professor-willow.github.io/data-bulbapedia/communityDays.json
 ```
 
 在後續的主題，將會以這些 GitHub Pages 上的 JSON 檔案作為資料源。
+
+## 四、範例原始碼
+
+完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-bulbapedia/tree/main/.github/workflows
