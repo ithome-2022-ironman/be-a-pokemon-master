@@ -26,7 +26,7 @@
 
 ## 二、GitHub Actions
 
-在過去 GitHub 專案若要串接 CI/CD 的功能，必須導入如 *CircleCI*、*Travis CI* 等持續整合服務。2019 年 GitHub 發佈了 *GitHub Actions*，整體使用起來與 GitLab 自家發展的一條龍生態系 *GitLab CI/CD* 相當類似。不過當中令人最為之一亮的特色，開發者間能夠過 Marketplace 將 Actions 流通分享。
+在過去 GitHub 專案若要串接 CI/CD 的功能，必須導入如 *CircleCI*、*Travis CI* 等持續整合服務。2019 年 GitHub 發佈了 *GitHub Actions*，整體使用起來與 GitLab 自家發展的一條龍生態系 *GitLab CI/CD* 相當類似。不過當中最為之一亮的特色，開發者間能夠過 Marketplace 將 Actions 流通分享複用。
 
 ### 1. Marketplace
 
@@ -35,9 +35,57 @@
 
 ### 2. 自動更新 GitHub Pages
 
-> TBD
+> ![](./github-action-deploy-to-github-pages.png)
+> GitHub Action: [deploy-to-github-pages](https://github.com/marketplace/actions/deploy-to-github-pages)
+
+人工部署作業勞心勞力，像是部署這類反覆性工作就相當適合使用 CI/CD 來達成自動化，同時還能夠減少人為的疏失。
+
+新增檔案 `.github/workflows/publish-github-pages.yml`。
+
+```yml
+name: publish github pages
+
+on:
+  # 只有當 push commit 至 main 時才會觸發
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Publish GitHub Pages
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installation
+        run: |
+          yarn install
+
+      - name: Generate JSON files
+        run: |
+          yarn start
+
+      - name: Commit files to gh-pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 預計將當前 workspace 指定路徑作為 GitHub Pages 的根目錄
+          folder: artifacts
+          # gh-pages 的分支名稱，默認為 'gh-pages'
+          branch: gh-pages
+```
 
 ### 3. 讓 workflow 永續運行
+
+> ![](./github-action-keepalive-workflow.png)
+> GitHub Action: [keepalive-workflow](https://github.com/marketplace/actions/keepalive-workflow)
 
 當項目內沒有提交行為長達 60 天時，為了避免不活躍的專案項目的自動排程不斷運行，GitHub 偵測使用 cron 觸發的 workflow 便會自動停擺，使用者必須主動開啟延長運行的請求。
 
@@ -45,12 +93,12 @@
 > *在不知情限制的狀況下，例行的排程默默地暫停*
 
 此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 action 來規避限制。
-* gautamkrishnar/keepalive-workflow: https://github.com/gautamkrishnar/keepalive-workflow
 
 ```yml
 name: keep workflow alive
 on:
   schedule:
+    # 伺服器時間午夜 00:00 會自動觸發此 scheduled workflow
     - cron: '0 0 * * *'
 
 jobs:
@@ -58,8 +106,10 @@ jobs:
     name: Keep workflow alive
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # 在目前的 workspace 中，checkout 至當前 repo commit
+      - uses: actions/checkout@v3
+      # 定期產生 empty commit
       - uses: gautamkrishnar/keepalive-workflow@master
 ```
 
-根據 **keepalive-workflow** 的社群提到，當 repo 內的最後一次 commit 時間已逾 50 天以上，此 action 將會創建一個 empty commit 保持專案的活躍狀態，以達到無限期的 workflow 運行。
+根據 **keepalive-workflow** 的文件提到，當 repo 內的最後一次 commit 時間已逾 50 天以上，此 action 將會創建一個 empty commit 保持專案的活躍狀態，以達到無限期的 workflow 運行。
