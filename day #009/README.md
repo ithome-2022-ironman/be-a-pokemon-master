@@ -40,7 +40,7 @@
 
 人工部署作業勞心勞力，像是部署這類反覆性工作就相當適合使用 CI/CD 來達成自動化，同時還能夠減少人為的疏失。
 
-新增檔案 `.github/workflows/publish-github-pages.yml`。
+新增檔案 `.github/workflows/publish-github-pages.yml`，並加入 `JamesIves/github-pages-deploy-action@v4` Action 來實現自動部署 GitHub Pages。
 
 ```yml
 name: publish github pages
@@ -58,17 +58,21 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v2
+      # 在目前的 workspace 中，checkout 至當前 repo commit
+      - uses: actions/checkout@v3
 
+      # 接下來 3 個 steps 可依自行需求調整，這裡是 Node.js 專案的起手式
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
+      # 依賴項目安裝
       - name: Installation
         run: |
           yarn install
 
+      # 運行主邏輯，這邊執行後會生成 'artifacts' 目錄的輸出檔案
       - name: Generate JSON files
         run: |
           yarn start
@@ -92,7 +96,7 @@ jobs:
 > ![](./01.png)
 > *在不知情限制的狀況下，例行的排程默默地暫停*
 
-此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 action 來規避限制。
+此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 Action 來規避限制。
 
 ```yml
 name: keep workflow alive
