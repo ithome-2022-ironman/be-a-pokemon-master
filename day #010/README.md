@@ -130,7 +130,7 @@ jobs:
 
 根據 **keepalive-workflow** 的文件提到，當 repo 內的最後一次 commit 時間已逾 50 天以上，此 action 將會創建一個 empty commit 保持專案的活躍狀態，以達到無限期的 workflow 運行。
 
-## 效果預覽
+## 三、效果預覽
 
 在 GitHub 的分支預覽，呈現效果如下：
 
