@@ -1,4 +1,4 @@
-# Day 09: GitHub Actions 部署 GitHub Pages
+# Day 10: GitHub Actions 部署 GitHub Pages
 
 <p align="center">
     <img src="./cover.png" width="100" />
@@ -42,12 +42,12 @@ touch .nojekyll
 
 如先前我們所使用的 npm packages 概念雷同，在 GitHub Marketplace 上有其他開發者分享的 Actions。
 
-> ![](/day%20%23009/github-markerplace.png)
+> ![](/day%20%23010/github-markerplace.png)
 > [*GitHub Marketplace*](https://github.com/marketplace?type=actions) 上依照性質分類 Actions
 
 ### 2. 自動更新 GitHub Pages
 
-> ![](/day%20%23009/github-action-deploy-to-github-pages.png)
+> ![](/day%20%23010/github-action-deploy-to-github-pages.png)
 > GitHub Action: [deploy-to-github-pages](https://github.com/marketplace/actions/deploy-to-github-pages)
 
 人工部署作業勞心勞力，像是部署這類反覆性工作就相當適合使用 CI/CD 來達成自動化，同時還能夠減少人為的疏失。
@@ -100,12 +100,12 @@ jobs:
 
 ### 3. 讓 workflow 永續運行
 
-> ![](/day%20%23009/github-action-keepalive-workflow.png)
+> ![](/day%20%23010/github-action-keepalive-workflow.png)
 > GitHub Action: [keepalive-workflow](https://github.com/marketplace/actions/keepalive-workflow)
 
 當項目內沒有提交行為長達 60 天時，為了避免不活躍的專案項目的自動排程不斷運行，GitHub 偵測使用 cron 觸發的 workflow 便會自動停擺，使用者必須主動開啟延長運行的請求。
 
-> ![](/day%20%23009/gitlab-action-workflow-disable.png)
+> ![](/day%20%23010/gitlab-action-workflow-disable.png)
 > *在不知情限制的狀況下，例行的排程被默默地暫停*
 
 此時，需要新增檔案 `.github/workflows/keep-workflow-alive.yml`，並加入 `gautamkrishnar/keepalive-workflow@master` 這項社群 Action 來規避限制。
@@ -134,7 +134,7 @@ jobs:
 
 在 GitHub 的分支預覽，呈現效果如下：
 
-![](/day%20%23009/gh-pages-preview-on-github.png)
+![](/day%20%23010/gh-pages-preview-on-github.png)
 
 並且圖片中的檔案能夠透過以下網址進行訪問：
 
