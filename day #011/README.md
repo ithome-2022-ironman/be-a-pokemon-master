@@ -214,3 +214,6 @@ main();
 ```
 
 更完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-youtuber
+
+> ![](/day%20%23011/preview.png)
+> *完整範例的參考[輸出結果](https://github.com/pmgo-professor-willow/data-youtuber/blob/gh-pages/channels.json)*
