@@ -118,8 +118,6 @@ const getChannelByUsername = async (username: string) => {
 ### 5. 根據需求進行微調
 
 ```ts
-import { google } from 'googleapis';
-
 const getVideos = async (channelId: string) => {
   // 使用 Google API 中的 YouTube Data API
   const service = google.youtube('v3');
@@ -151,6 +149,63 @@ const getVideos = async (channelId: string) => {
 };
 ```
 
-## 三、結語
+## 三、範例原始碼
 
-TBD
+```ts
+import { google } from 'googleapis';
+
+const getChannelByUsername = async (username: string) => {
+  const service = google.youtube('v3');
+  const response = await service.channels.list({
+    auth: '需替換成自己的 token',
+    part: ['snippet', 'statistics'],
+    forUsername: username,
+  });
+
+  // 此時的 channel.id 就是該頻道的 ID
+  const [channel] = response.data.items || [];
+
+  return channel;
+};
+
+const getVideos = async (channelId: string) => {
+  // 使用 Google API 中的 YouTube Data API
+  const service = google.youtube('v3');
+  const response = await service.playlistItems.list({
+    auth: '需替換成自己的 token',
+    part: ['snippet'],
+    playlistId: channelId.replace('UC', 'UU'),
+    maxResults: 10,
+  });
+
+  // 取得 videos 陣列，並進行加工
+  const videos = response.data.items || [];
+  const results = videos.map((video) => ({
+    // 影片標題
+    title: String(video.snippet?.title),
+    // 連結藉由影片 ID 組合而成
+    url: `https://www.youtube.com/watch?v=${video.snippet?.resourceId?.videoId}`,
+    // 發布時間
+    publishedAt: String(video.snippet?.publishedAt),
+    // 縮圖有多種解析度，但都不是必定提供，所以這裡列舉了數種
+    thumbnailUrl: String(
+      video.snippet?.thumbnails?.standard?.url ||
+      video.snippet?.thumbnails?.high?.url ||
+      video.snippet?.thumbnails?.default?.url
+    ),
+  }));
+
+  return results;
+};
+
+const main = async () => {
+  // 範例的頻道：https://www.youtube.com/user/TheSs010109/videos
+  const channel = await getChannelByUsername('TheSs010109');
+  const videos = await getVideos(channel.id);
+  console.log(videos);
+};
+
+main();
+```
+
+更完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-youtuber
