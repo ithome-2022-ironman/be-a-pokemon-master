@@ -18,7 +18,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 * [ ] [Day 08: 爬蟲設計入門班 ③: The Silph Road 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23008/README.md)
 * [ ] [Day 09: 爬蟲設計入門班 ④: 使用 Puppeteer 進行爬蟲作業](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23009/README.md)
 * [x] [Day 10: GitHub Actions 部署 GitHub Pages](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23010/README.md)
-* [ ] [Day 11: 串接 YouTube API 取得影片資料](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23011/README.md)
+* [x] [Day 11: 串接 YouTube API 取得影片資料](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23011/README.md)
 * [ ] [Day 12: 串接 Twitter API 取得推文資料](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23012/README.md)
 * [ ] [Day 13: 製作 JS package，並發布到 npm](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23013/README.md)
 * [ ] [Day 14: LINE Message API 介紹與首次設定](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23014/README.md)
