@@ -51,14 +51,10 @@
 
 便可確立欲收集的四種資訊皆可透過 API 獲得，其中發布日期的確提供了精準日期的 ***datetime***。
 
-* 影片標題
-  * `snippet.title`: ***string***
-* 影片連結（ID 部分）
-  * `snippet.channelId`: ***string***
-* 發布日期
-  * `snippet.publishedAt`: ***datetime***
-* 影片縮圖
-  * `snippet.thumbnails.*.url`: ***string***
+* 影片標題：`snippet.title` (***string***)
+* 影片連結：`snippet.channelId` (***string***) --- （可由 ID 加工組合成影片連結網址）
+* 發布日期：`snippet.publishedAt` (***datetime***)
+* 影片縮圖：`snippet.thumbnails.*.url` (***string***)
 
 ### 2. 使用官方 SDK
 
