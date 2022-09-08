@@ -85,7 +85,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」自 2021 年 2 月上線。筆�
 
 ![以 React + TypeScript 進行 LINE LIFF 的網頁開發](/day%20%23001/ep04.png)
 
-* Day 21: LINE LIFF 介紹
+* Day 21: LIFF (LINE Front-end Framework) 介紹與設定
 * Day 22: React + TypeScript 專案相關建置
 * Day 23: React 入門班 ①: React 的生命週期
 * Day 24: React 入門班 ②: React Component

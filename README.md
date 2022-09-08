@@ -28,7 +28,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 * [ ] [Day 18: LINE Messaging API 入門班 ③: 以圖文選單進行互動](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23018/README.md)
 * [ ] [Day 19: 並配合 VSCode debugging 設定斷點進行除錯](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23019/README.md)
 * [ ] [Day 20: 部署至 Google Cloud Functions 並結合自動化部署](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23020/README.md)
-* [ ] [Day 21: LINE LIFF 介紹](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23021/README.md)
+* [ ] [Day 21: LIFF (LINE Front-end Framework) 介紹與設定](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23021/README.md)
 * [ ] [Day 22: React + TypeScript 專案相關建置](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23022/README.md)
 * [ ] [Day 23: React 入門班 ①: React 的生命週期](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23023/README.md)
 * [ ] [Day 24: React 入門班 ②: React Component](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23024/README.md)
