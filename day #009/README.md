@@ -25,9 +25,7 @@
 
 ![](/day%20%23009/bulbapedia-community-day-events.png)
 
-### 1. TBD
-
-### 2. 為什麼下載的 HTML 和瀏覽時不同？
+### 1. 為什麼下載的 HTML 和瀏覽時不同？
 
 使用工具 `curl` 直接訪問指定網址後，理應上應該要取得瀏覽器訪問時相同的 HTML，但事與願違。
 
@@ -99,5 +97,30 @@ await page.goto(url, { waitUntil: 'networkidle0' });
 const html = await page.evaluate(() => document.querySelector('*')?.outerHTML!);
 ```
 
-### 2. TBD
+`page.evaluate()` 由字面上可以解讀為「當前的 `page`」執行「function 所指定行為」。
 
+將從 Node.js 的環境切換至 Chromium 內執行，在 Chromium 取得 `outerHTML` 並回傳回 Node.js。
+
+> ![](/day%20%23009/pupperteer-evaluate-diagram.png)
+> * `page.evaluate()` 的執行流程，圖片取自於：https://stackoverflow.com/a/52046312*
+
+### 2. 開始解析 HTML
+
+將過去幾天所學習到的技巧套用進來，
+
+TBD
+
+## 三、範例原始碼
+
+### 1. 此次範例原始碼整理
+
+```ts
+main();
+```
+
+### 2. 更完整的範例
+
+更完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-bulbapedia
+
+> ![](/day%20%23009/preview.png)
+> *完整範例的參考[輸出結果](https://github.com/pmgo-professor-willow/data-bulbapedia/blob/gh-pages/communityDays.json)*
