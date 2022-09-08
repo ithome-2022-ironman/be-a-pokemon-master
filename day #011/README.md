@@ -16,7 +16,7 @@
 
 ## 快速導覽
 
-> TBD
+> 在搜集資料情境下，不見得只有爬蟲技術才能夠獲取想要的資訊，在部分情況下可以透過服務商提供的 API 進行串接以達到相同或更好的效果。這次的練習中將會以 YouTube Data API 為例。
 > * tags: `nodejs`, `youtube`, `youtube-data-api`
 
 ## 一、以爬蟲技巧嘗試取得
@@ -91,8 +91,11 @@ const getVideos = async (playlistId: string) => {
 
 ### 4. 取得播放清單 ID
 
+若要取得 `playlistId`，可以先透過 `username` 查詢到指定 channel 的完整資訊。
+
 ```ts
 const getChannelByUsername = async (username: string) => {
+  // 使用 Google API 中的 YouTube Data API
   const service = google.youtube('v3');
   const response = await service.channels.list({
     auth: '需替換成自己的 token',
@@ -155,6 +158,7 @@ const getVideos = async (channelId: string) => {
 import { google } from 'googleapis';
 
 const getChannelByUsername = async (username: string) => {
+  // 使用 Google API 中的 YouTube Data API
   const service = google.youtube('v3');
   const response = await service.channels.list({
     auth: '需替換成自己的 token',
@@ -200,7 +204,8 @@ const getVideos = async (channelId: string) => {
 
 const main = async () => {
   // 範例的頻道：https://www.youtube.com/user/TheSs010109/videos
-  const channel = await getChannelByUsername('TheSs010109');
+  const username = 'TheSs010109';
+  const channel = await getChannelByUsername(username);
   const videos = await getVideos(channel.id);
   console.log(videos);
 };
