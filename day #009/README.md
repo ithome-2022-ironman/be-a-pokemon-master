@@ -20,7 +20,7 @@
 
 ## 一、BulbaPedia
 
-這次爬蟲入門，我們選擇的案例和前幾天有些不同。嘗試從 BulbaPedia 的爬取資料社群日資料，並將其結構化儲存。
+這次爬蟲入門，我們選擇的案例和前幾天有些不同。嘗試從 BulbaPedia 的爬取寶可夢社群日資料，並將其結構化儲存。
 * https://bulbapedia.bulbagarden.net/wiki/Community_Day
 
 ![](/day%20%23009/bulbapedia-community-day-events.png)
@@ -44,12 +44,14 @@ curl https://bulbapedia.bulbagarden.net/wiki/Community_Day
 
 ### 1. 取得 HTML
 
+其實接下來運行的每一行，和使用者在操作的動作根本大相徑庭。
+
 ```ts
 import puppeteer from 'puppeteer';
 
 const getCommunityDays = async () => {
   const url = 'https://bulbapedia.bulbagarden.net/wiki/Community_Day';
-  // headless 關閉後，會啟動本地的 Chromium
+  // headless 關閉後，會啟動本地有介面版本的 Chromium
   const browser = await puppeteer.launch({ headless: false });
   // 開啟新分頁
   const page = await browser.newPage();
@@ -66,16 +68,16 @@ const getCommunityDays = async () => {
 
 #### 1-1. BrowserLaunchArgumentOptions: headless
 
-還記得前面提到，我們要「盡可能模仿」一般使用者的瀏覽行為嗎？
+還記得前面提到，我們要「盡可能模仿」一般使用者的瀏覽行為嗎？最直白的方法就是直接開一個瀏覽器啦！
 
 ```ts
 const browser = await puppeteer.launch({ headless: false });
 ```
 
-當 option 設定為 `headless: false` 後，執行程式會開啟 Chromium，而它看起來和 Chrome 其實差不多！
+當 option 設定為 `headless: false` 後，執行程式會開啟 Chromium，而它看起來和 Chrome 其實差不多！預設為 `true`，便會在背景執行，當開發完成後可以考慮將 `headless` 開啟。
 
 > ![](/day%20%23009/chromium.png)
-> *Chromium 開啟了指定的網頁*
+> *自動執行了 Chromium，並開啟了指定的網頁*
 
 #### 1-2. WaitForOptions: waitUntil
 
@@ -102,19 +104,160 @@ const html = await page.evaluate(() => document.querySelector('*')?.outerHTML!);
 將從 Node.js 的環境切換至 Chromium 內執行，在 Chromium 取得 `outerHTML` 並回傳回 Node.js。
 
 > ![](/day%20%23009/pupperteer-evaluate-diagram.png)
-> * `page.evaluate()` 的執行流程，圖片取自於：https://stackoverflow.com/a/52046312*
+> `page.evaluate()` 的執行流程，圖片取自於：https://stackoverflow.com/a/52046312*
 
-### 2. 開始解析 HTML
+## 三、querySelector 再度登場
 
-將過去幾天所學習到的技巧套用進來，
+將過去幾天所學習到的 **querySelector** 技巧套用進來，還是得強調，由於爬蟲爬的是別人的網站，在撰寫的過程中難免會大量出現 magic number 是無可厚非的。而解析 HTML 的過程經常需要見招拆招，建議還是多多練習，速度自然會起來。
 
-TBD
+### 1. 理解 DOM 結構，取得重複性的最小單位
 
-## 三、範例原始碼
+從 DOM 結構看起來，我們需要取得每一張 table 的 `<tr>`，於是 selector 將會編寫為：`table.roundtable tbody tr`。
+
+![](/day%20%23009/dom-tree.png)
+
+```ts
+// 解析原始 HTML 成樹狀結構
+const root = parse(html);
+const rowItems = root.querySelectorAll('table.roundtable tbody tr');
+```
+
+### 2. 排除 table header
+
+迭代處理 `rowItems` 時，會發現每張 table 的第一個 `<tr>` 都是 header，並且當中不會有任何 `<td>`，只會有 `<th>`，我們便可以針對這點去做設計。
+
+```ts
+const communityDays: CommunityDay[] = [];
+
+for (const rowItem of rowItems) {
+  const tdItems = rowItem.querySelectorAll('td');
+  const isHeader = !tdItems.length;
+
+  if (isHeader) {
+    continue;
+  }
+
+  // 還沒有結束哦！
+}
+```
+
+### 3. 從每則 row 中萃取資訊
+
+```ts
+const communityDays: CommunityDay[] = [];
+
+for (const rowItem of rowItems) {
+  // 延續剛剛的程式碼
+
+  // 主題寶可夢的名稱
+  const featuredPokemon = tdItems[0].querySelector('a')?.getAttribute('title');
+  // 社群日日期
+  const date = tdItems[1].getAttribute('data-sort-value');
+  // 社群日可以習得的限定招式
+  const moves = tdItems[2].querySelectorAll('a')?.map(e => e.getAttribute('title')!).filter(s => s?.includes('(move)')).map(s => s?.replace(' (move)', ''));
+  // 能夠獲得限定招式的寶可夢名稱
+  const eligiblePokemons = tdItems[3].querySelectorAll('span a')?.map(e => e.getAttribute('title'));
+  // 將資料 push 進 `communityDays` 陣列
+  eligiblePokemons.forEach(eligiblePokemon => communityDays.push({ featuredPokemon, eligiblePokemon, moves, date }));
+
+  return communityDays.filter(c => c.featuredPokemon);
+}
+```
+
+### 4. 發生例外的狀況，rowspan
+
+多數的社群日都是主題寶可夢進化為特定一種寶可夢，但是這個例外發生在伊布身上了，在 BulbaPedia 的處理方式是透過 rowspan 讓第二個開始的 `<tr>` 只剩下兩個 `<td>`。
+
+![](/day%20%23009/dom-tree-2.png)
+
+```ts
+const communityDays: CommunityDay[] = [];
+
+for (const rowItem of rowItems) {
+  // 延續剛剛的程式碼
+
+  if (tdItems.length === 6) {
+    // 延續剛剛的程式碼
+  } else if (tdItems.length === 2) {
+    // 社群日可以習得的限定招式
+    const moves = tdItems[0].querySelectorAll('a')?.map(e => e.getAttribute('title')!).filter(s => s?.includes('(move)')).map(s => s?.replace(' (move)', ''));
+    // 能夠獲得限定招式的寶可夢名稱
+    const eligiblePokemon = tdItems[1].querySelector('a')?.getAttribute('title');
+    // 將缺少的資訊以前一筆繼承，將資料 push 進 `communityDays` 陣列
+    const lastCommunityDay = _.last(communityDays);
+    communityDays.push({ ...lastCommunityDay, eligiblePokemon, moves });
+  }
+
+  return communityDays.filter(c => c.featuredPokemon);
+}
+```
+
+## 四、範例原始碼
 
 ### 1. 此次範例原始碼整理
 
 ```ts
+// Node modules.
+import _ from 'lodash';
+import puppeteer from 'puppeteer';
+import { parse } from 'node-html-parser';
+// Local modules.
+import { hostUrl } from './utils';
+
+interface CommunityDay {
+  featuredPokemon?: string;
+  eligiblePokemon?: string;
+  moves?: string[];
+  date?: string;
+}
+
+const getCommunityDays = async () => {
+  const url = 'https://bulbapedia.bulbagarden.net/wiki/Community_Day';
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: 'networkidle0' });
+  const html = await page.evaluate(() => document.querySelector('*')?.outerHTML!);
+  await browser.close();
+
+  const root = parse(html);
+  const rowItems = root.querySelectorAll('table.roundtable tbody tr');
+
+  const communityDays: CommunityDay[] = [];
+  
+  for (const rowItem of rowItems) {
+    const tdItems = rowItem.querySelectorAll('td');
+    const isHeader = !tdItems.length;
+
+    if (isHeader) {
+      continue;
+    }
+
+    // First row.
+    if (tdItems.length === 6) {
+      const featuredPokemon = tdItems[0].querySelector('a')?.getAttribute('title');
+      const date = tdItems[1].getAttribute('data-sort-value');
+      const moves = tdItems[2].querySelectorAll('a')?.map(e => e.getAttribute('title')!).filter(s => s?.includes('(move)')).map(s => s?.replace(' (move)', ''));
+      const eligiblePokemons = tdItems[3].querySelectorAll('span a')?.map(e => e.getAttribute('title'));
+
+      eligiblePokemons.forEach(eligiblePokemon => communityDays.push({ featuredPokemon, eligiblePokemon, moves, date }));
+    }
+    // Second row, third row ...
+    else if (tdItems.length === 2) {
+      const moves = tdItems[0].querySelectorAll('a')?.map(e => e.getAttribute('title')!).filter(s => s?.includes('(move)')).map(s => s?.replace(' (move)', ''));
+      const eligiblePokemon = tdItems[1].querySelector('a')?.getAttribute('title');
+      const lastCommunityDay = _.last(communityDays);
+
+      communityDays.push({ ...lastCommunityDay, eligiblePokemon, moves });
+    }
+  }
+
+  return communityDays.filter(c => c.featuredPokemon);
+};
+
+const main = async () => {
+  const communityDays = await getCommunityDays();
+};
+
 main();
 ```
 
