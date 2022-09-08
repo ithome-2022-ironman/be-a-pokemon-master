@@ -154,6 +154,8 @@ const getVideos = async (channelId: string) => {
 
 ## 三、範例原始碼
 
+### 1. 此次範例原始碼整理
+
 ```ts
 import { google } from 'googleapis';
 
@@ -212,6 +214,8 @@ const main = async () => {
 
 main();
 ```
+
+### 2. 更完整的範例
 
 更完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-youtuber
 
