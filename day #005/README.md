@@ -122,6 +122,34 @@ touch .gitignore
 
 ## 三、腳本設置
 
-在 `package.json` 中有一屬性 `scripts` 可以撰寫自定義腳本來輔助
+在 `package.json` 中有一屬性 `scripts` 可以撰寫自定義腳本。
 
-TBD
+### 1. 自定義腳本
+
+如剛才我們使用的 `yarn ts-node src/index.ts` 就很適合作為一個 script。只需要在 `package.json` 加入 `scripts` 物件，當中的 `key` 為欲成為指令的 token，`value` 為實際會運行的指令。
+
+```json
+{
+  // ... 其他屬性
+
+  // 自定義腳本
+  "scripts": {
+    // 未來只需輸入 `yarn start` 就可以達到相同效果
+    "start": "ts-node ./src/index.ts"
+  }
+}
+```
+
+### 2. 多種執行方式
+
+前面的例子會產生一個疑惑，原本使用的指令是 `yarn ts-node src/index.ts`，但填入的指令卻只剩下 `ts-node src/index.ts`。原因是在 `scripts` 中的指令，都會以 `yarn run` 的程式來執行，因此以下四種寫法效果是等價的：
+* `yarn run ts-node ./src/index.ts`
+* `yarn ts-node ./src/index.ts`
+* `yarn run start`
+* `yarn start`
+
+### 3. 其它功能
+
+`scripts` 能做到的花樣還有更多，包含：
+* 指令之間能建立生命週期的 `pre` / `post`
+* 
