@@ -47,7 +47,7 @@
 
 ![](/day%20%23007/leekduck-pokemon-item.png)
 
-根據節點結構大致可以劃分成：
+根據節點結構大致可以用以下 selectors 劃分成：
 * `.boss-img`
   * `img`: 寶可夢圖片
   * `img.shiny-icon`: 是否開放捕捉異色，若無則此節點不存在
