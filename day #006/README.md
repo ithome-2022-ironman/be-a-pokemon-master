@@ -31,7 +31,7 @@
 * 縮圖網址
 * 消息連結
 
-### 收斂至最小的處理單位
+### 1. 收斂至最小的處理單位
 
 於 Google Chrome 對畫面右鍵 > **Inspect** 開啟 devtool 後，可以試著展開 **Elements** 分頁中的 DOM (Document Object Model) ，以找到畫面中的第一則消息卡片。
 
@@ -54,7 +54,7 @@ document.querySelectorAll('.blogList__post');
 
 回到我們的 Node.js 專案，接著撰寫一個簡易的爬蟲程式。
 
-### 取得 HTML
+### 1. 取得 HTML
 
 首先在 terminal 輸入以下指令安裝對應的 packages。
 
@@ -83,7 +83,7 @@ main();
 
 ![](/day%20%23006/04.png)
 
-### 取得所有消息
+### 2. 取得所有消息
 
 在 terminal 輸入以下指令安裝 `node-html-parser` packages，接著透過 `node-html-parser` 套件來對下載的 HTML 進行 DOM 的解析。
 
@@ -123,7 +123,7 @@ const main = async () => {
 main();
 ```
 
-### 將消息資料結構化
+### 3. 將消息資料結構化
 
 承接上一小節的進度，我們將會遍歷 `postItems`，將每一張卡片的內資訊萃取出來。
 
@@ -153,7 +153,7 @@ const posts: Post[] = postItems.map((postItem) => ({
 }));
 ```
 
-#### 取得節點內的純文字
+#### 3-1. 取得節點內的純文字
 
 ```ts
 {
@@ -162,7 +162,7 @@ const posts: Post[] = postItems.map((postItem) => ({
 }
 ```
 
-#### 取得節點內特定屬性的數值
+#### 3-2. 取得節點內特定屬性的數值
 
 ```ts
 {
@@ -181,7 +181,7 @@ const posts: Post[] = postItems.map((postItem) => ({
 >
 > 註：由於這樣的寫法僅能在編譯階段示警，若在 runtime 過程 TS 是無從干涉的，建議避免使用在重要專案當中。
 
-### 最終輸出結果
+### 4. 最終輸出結果
 
 執行後，得到的 `posts` 結果如下：
 
