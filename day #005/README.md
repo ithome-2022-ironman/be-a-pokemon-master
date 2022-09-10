@@ -25,13 +25,20 @@
 
 Pros / Cons
 
-> 成也 JavaScript 敗也 JavaScript
+### 1. 成也 JavaScript 敗也 JavaScript
 
-Node.js 原封不動將 JavaScript 那自由奔放、放蕩不羈的特性，毫不保留地轉移到了後端服務上。
+Node.js 原封不動將 JavaScript 那自由奔放（變數作用域）、放蕩不羈（動態弱型別）的特性，毫不保留地轉移到了後端服務上。前者還可以透過團隊開發規範（code convention）迴避，但後者當專案規模隨著時間成長，很容易變成難以控制的局面。
 
-TBD
+基於這些原因，其實技術選型的情形下，除了自身的熟稔程度外，每個語言、框架所擅長的領域略有相同。
 
-> 救世主 TypeScript
+> ![](/textures/notice.png) 關於更多的「動態弱型別」 ![](/textures/notice.png)
+>
+> ---
+>
+> 推薦可以閱讀 2019 鐵人賽系列文，可以獲得更多切身之痛的案例：
+> * **onejar99** ─ [你不可不知的 JavaScript 二三事](https://ithelp.ithome.com.tw/users/20112483/ironman/2016) Day 2-4
+
+### 2. 救世主 TypeScript
 
 TBD
 
