@@ -16,7 +16,7 @@
 
 ## 快速導覽
 
-> 從昨天實作中完整順過一個簡易爬蟲開發，今天會將這些步驟歸納出爬蟲的基本流程，屆時再練習不同的案例！
+> 從昨天實作中完整順過一個簡易爬蟲開發，今天會將這些步驟歸納出爬蟲的基本流程，並練習不同的案例！
 > * tags: `nodejs`, `typescript`, `web-crawler`, `web-scraping`
 
 ## 一、網路爬蟲的開發流程
@@ -25,7 +25,7 @@
 1. 決定欲搜集資料的網頁
 2. 檢查網頁的代碼（DOM 結構）
 3. 找到要萃取的數據
-4. 準備開發環境並開始撰寫程式碼
+4. 準備開發環境並撰寫程式碼
 5. 運行程式並驗證結果是否如預期
 6. 將取得的數據儲存下來
 
@@ -33,11 +33,21 @@
 
 ## 二、LeekDuck 遊戲資料站
 
-透過 Google Chrome 的 devtool 檢查 DOM 的結構，可以觀察到團體戰星數（Tier）是 classname `header-li` 的節點，首領寶可夢資訊紀錄在 classname `boss-item` 的節點，且攤平於同一層。
+### 1. 先將資料分群
+
+透過 Google Chrome 的 devtool 檢查 DOM 的結構，先行聚焦在 `#raid-list` 節點上：
 
 ![](/day%20%23007/leekduck-list.png)
 
-首領寶可夢的資料節點展開後，可以劃分成以下結構：
+可以觀察到團體戰星數（Tier）是 classname `header-li` 的節點，首領寶可夢資訊紀錄在 classname `boss-item` 的節點，且攤平於同一層。
+
+### 2. 分析最小的處理單位
+
+接著，首領寶可夢的資料節點 `boss-item`，便會是此次處理的最小單位節點：
+
+![](/day%20%23007/leekduck-pokemon-item.png)
+
+根據節點結構大致可以劃分成：
 * `.boss-img`
   * `img`: 寶可夢圖片
   * `img.shiny-icon`: 是否開放捕捉異色，若無則此節點不存在
@@ -53,4 +63,13 @@
     * `img.weather2`: 根據寶可夢第二屬性，天氣加成的條件，若無則此節點不存在
   * `.boosted-cp`: 天氣加成的 CP 值上限與下限
 
-![](/day%20%23007/leekduck-pokemon-item.png)
+## 二、撰寫爬蟲
+
+TBD
+
+### 1. 
+
+
+## 四、範例原始碼
+
+完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-leekduck
