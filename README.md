@@ -51,6 +51,6 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 ---
 
 * [ ] [Day 28: 預留做為 buffer](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23028/README.md)
-* [ ] [Day 29: 預留做為 buffer](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23029/README.md)
+* [ ] [Day 29: [暫定] 從後台數據觀察用戶使用狀況](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23029/README.md)
 * [ ] [Day 30: 賽末心得](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23030/README.md)
 
