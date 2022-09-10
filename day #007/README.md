@@ -36,7 +36,7 @@
 我們預計從 LeekDuck 遊戲資料站抓取 Pokemon GO 的團體戰資訊。
 * https://www.leekduck.com/boss
 
-> ![](/textures/notice.png) Pokemon GO 特色玩法：團體戰 ![](/textures/notice.png)
+> ![](/textures/notice.png) Pokemon GO 特色玩法：團體戰（Raid） ![](/textures/notice.png)
 >
 > ---
 >
@@ -48,7 +48,7 @@
 
 ![](/day%20%23007/leekduck-list.png)
 
-可以觀察到團體戰星數（Tier）是 classname `header-li` 的節點，首領寶可夢資訊紀錄在 classname `boss-item` 的節點，且攤平於同一層。
+可以觀察到團體戰難度（Tier）是 classname `header-li` 的節點，首領寶可夢資訊紀錄在 classname `boss-item` 的節點，且攤平於同一層。因此在後續解析時，必須以相同團體戰難度為同群來處理。
 
 ### 2. 分析最小的處理單位
 
