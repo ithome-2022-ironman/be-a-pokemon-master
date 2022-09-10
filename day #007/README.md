@@ -33,6 +33,15 @@
 
 ## 二、LeekDuck 遊戲資料站
 
+我們預計從 LeekDuck 遊戲資料站抓取 Pokemon GO 的團體戰資訊。
+* https://www.leekduck.com/boss
+
+> ![](/textures/notice.png) Pokemon GO 特色玩法：團體戰 ![](/textures/notice.png)
+>
+> ---
+>
+> 當頭目寶可夢占領道館時，便會發生 **團體戰**。 你的目標是打敗這個強大的頭目寶可夢。 當你和其他訓練家同心協力擊敗頭目寶可夢後，便可獲得只有贏得團體戰時才能得到的特殊道具，並有機會捕捉被擊敗的頭目寶可夢。 團體戰需要互相合作。和其他訓練家同心協力，一起挑戰強大的頭目寶可夢吧。 ─ 引自於 *Pokemon GO 官方幫助中心*
+
 ### 1. 先將資料分群
 
 透過 Google Chrome 的 devtool 檢查 DOM 的結構，先行聚焦在 `#raid-list` 節點上：
@@ -43,7 +52,7 @@
 
 ### 2. 分析最小的處理單位
 
-接著，首領寶可夢的資料節點 `boss-item`，便會是此次處理的最小單位節點：
+接著，頭目寶可夢的資料節點 `boss-item`，便會是此次處理的最小單位節點：
 
 ![](/day%20%23007/leekduck-pokemon-item.png)
 
