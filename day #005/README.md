@@ -19,11 +19,13 @@
 > 在接下來的程式開發前，需要先行建置 Node.js 搭配 TypeScript 專案的初始化，會逐一解釋各步驟的理由及效果。
 > * tags: `nodejs`, `typescript`
 
-## 一、TBD
+## 一、從 JavaScript 到 TypeScript
 
-後端語言、框架的選擇很多，而 Node.js 因為 JavaScript 語言特性緣故。
+後端語言、框架的選擇很多，Node.js 是一種後端開發的框架，採用了 Google 所維護的 **V8** 引擎，是一款運行 JavaScript 的引擎，讓 JS 的領域從瀏覽器再延伸出去。
 
-Pros / Cons
+而 JavaScript 語言本身的 *Event-driven* 特性，搭配 Node.js 的 *non-blocking* 特性，讓 Node.js 相當適合高併發的應用場景。
+
+但 Node.js 也因為 JavaScript 其它的語言特性，會受到一些先天性的限制。
 
 ### 1. 成也 JavaScript 敗也 JavaScript
 
@@ -40,7 +42,26 @@ Node.js 原封不動將 JavaScript 那自由奔放（變數作用域）、放蕩
 
 ### 2. 救世主 TypeScript
 
-TBD
+TypeScript 的誕生原因是微軟在開發 JavaScript 專案時，缺乏了大型 web 專案該有的幾項要素，進而催生 TypeScript 的誕生。TypeScript 的主要作者是 C# 之父 *Anders Hejlsberg*，所以在撰寫會有些 C# 的影子存在。
+
+以及經常會聽到的 **ES6**（含以上版本等），實際上是對應到特定版本號的 **ECMAScript**。**ECMAScript** 是訂定的語言標準，則 **JavaScript** 是實現 **ECMAScript** 並加上了 **DOM**、**BOM** 要素的語言，而 **TypeScript** 則是兩者的超集。
+* **ECMAScript**
+* **JavaScript**
+  * 遵循 **ECMAScript** 的語言規範作為基礎
+  * DOM (Document Object Model)：即全域物件 `document.`
+  * BOM (Browser Object Model)：即全域物件 `windows.`
+* **TypeScript**
+  * 將 **JavaScript** 附加上強大 *Type System*
+
+> ![](/textures/notice.png) 關於更多的 TypeScript 與 ECMAScript ![](/textures/notice.png)
+>
+> ---
+>
+> 推薦可以閱讀 2019 鐵人賽系列文，了解更完整的 TypeScript 開發方式：
+> * **Maxwell Alexius** ─ [讓 TypeScript 成為你全端開發的 ACE！](https://ithelp.ithome.com.tw/users/20120614/ironman/2685)
+>
+> 若是想聽聽更多 ECMAScript 的講古，推薦可以閱讀 2019 鐵人賽系列文：
+> * **kjj6198** ─ [深入現代前端開發](https://ithelp.ithome.com.tw/users/20103565/ironman/2527) Day 2
 
 ## 二、建置專案
 
@@ -154,9 +175,3 @@ touch .gitignore
 * `yarn ts-node ./src/index.ts`
 * `yarn run start`
 * `yarn start`
-
-### 3. 其它功能
-
-`scripts` 能做到的花樣還有更多，包含：
-* 指令之間能建立生命週期的 `pre` / `post`
-* 
