@@ -20,7 +20,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 
 * [ ] [Day 05: Node.js + TypeScript 專案相關建置](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23005/README.md)
 * [x] [Day 06: 爬蟲設計入門班 ①: Pokemon GO 官方網站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23006/README.md)
-* [ ] [Day 07: 爬蟲設計入門班 ②: LeekDuck 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23007/README.md)
+* [x] [Day 07: 爬蟲設計入門班 ②: LeekDuck 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23007/README.md)
 * [ ] [Day 08: 爬蟲設計入門班 ③: The Silph Road 遊戲資料站](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23008/README.md)
 * [x] [Day 09: 爬蟲設計入門班 ④: 使用 Puppeteer 進行爬蟲作業](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23009/README.md)
 * [x] [Day 10: GitHub Actions 部署 GitHub Pages](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23010/README.md)

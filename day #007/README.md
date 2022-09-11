@@ -50,7 +50,7 @@
 
 可以觀察到團體戰難度（Tier）是 classname `header-li` 的節點，首領寶可夢資訊紀錄在 classname `boss-item` 的節點，且攤平於同一層。因此在後續解析時，必須以相同團體戰難度為同群來處理。
 
-### 2. 分析最小的處理單位
+### 2. 解析最小的處理單位
 
 接著，頭目寶可夢的資料節點 `boss-item`，便會是此次處理的最小單位節點：
 
@@ -72,13 +72,100 @@
     * `img.weather2`: 根據寶可夢第二屬性，天氣加成的條件，若無則此節點不存在
   * `.boosted-cp`: 天氣加成的 CP 值上限與下限
 
-## 二、撰寫爬蟲
+## 三、撰寫爬蟲
 
-TBD
+話不多說，我們直接開始！
 
-### 1. 
+### 1. 取得 HTML 與所有頭目寶可夢資料
 
+建立 `src/index.ts`：
+
+```ts
+import fetch from 'node-fetch';
+import { parse } from 'node-html-parser';
+
+const main = async () => {
+  const url = 'https://leekduck.com/boss/';
+  const res = await fetch(url);
+  const html = await res.text();
+
+  // 解析 HTML
+  const root = parse(html);
+  // 查詢 ID 為 'raid-list' 節點底下的 'ul.list li'
+  const listItems = root.querySelectorAll('#raid-list ul.list li');
+  const tierList: { tier: string, index: number }[] = [];
+  const bossItems: HTMLElement[] = [];
+
+  // 會有「團體戰難度的標題節點」，以及「頭目寶可夢資訊節點」
+  listItems.forEach((listItem, i) => {
+    const isHeader = listItem.getAttribute('class') === 'header-li';
+
+    if (isHeader) {
+      // 透過 selector 取的 header 節點，將其文字 'Tier 3' 正規化為 'tier 3'
+      const tierText = listItem.querySelector('h2.boss-tier-header').lastChild.rawText;
+      const tier = tierText.toLowerCase().replace('tier', '').trim();
+      // 將目前的難度 index 一併記錄下來，方便後續分群時判斷
+      const index = i - tierList.length;
+      tierList.push({ tier, index });
+    } else {
+      // 將頭目寶可夢資訊記錄下來
+      bossItems.push(listItem);
+    }
+  });
+
+  // 還沒有結束哦！
+};
+
+main();
+```
+
+### 2. 將頭目寶可夢資料結構化
+
+接著透過 `.querySelector()` 與 `.querySelectorAll()` 根據資料性質，可能為單筆或多筆，依實際狀況去調整迭代去處理。
+
+```ts
+// 文字的轉換小工具，原始文字為 '1548 - 1633'，將會轉換為 { min: 1548, max: 1633 }
+const cpFormatter = (cpRawText: string) => {
+  const matches = cpRawText.trim().match(/^(\d+)[^\d]+(\d+)$/);
+  return matches
+    ? { min: parseInt(matches[1]), max: parseInt(matches[2]) }
+    : null;
+};
+
+const raidBosses = bossItems.map((bossItem, i) => ({
+  // 剛才的 tierList 目的就是能夠知道指定頭目寶可夢的挑戰難度為何
+  tier: _.maxBy(tierList.filter((o) => i >= o.index), 'index')?.tier,
+  // 取得節點的文字部分作為寶可夢名稱
+  name: bossItem.querySelector('p.boss-name').firstChild.rawText,
+  // 由於圖片網址只會提供相對路徑，所以需要將 host URL 加入
+  imageUrl: new URL(bossItem.querySelector('div.boss-img img').getAttribute('src')!, url).href,
+  // 根據是否有找到節點決定是「否有開放捕捉異色」
+  shinyAvailable: !!bossItem.querySelector('div.boss-img img.shiny-icon'),
+  // 電系 'Electric' 會正規化為 'electric'；超能力系 'Psychic' 會正規化為 'psychic' ... 諸此類推
+  types: bossItem.querySelectorAll('div.boss-type img').map((node) =>
+    node.getAttribute('title')?.toLowerCase()
+  ),
+  // 由於圖片網址只會提供相對路徑，所以需要將 host URL 加入
+  typeUrls: bossItem.querySelectorAll('div.boss-type img').map((node) =>
+    new URL(node.getAttribute('src')!, url)
+  ),
+  // 這裡的 `lastChild` 是比較特別的做法，因為在 `div.boss-2` 中有兩個 children，後者是不帶有任何 tag 的節點
+  cp: cpFormatter(bossItem.querySelector('div.boss-2').lastChild.rawText),
+  boostedCp: cpFormatter(bossItem.querySelector('div.boss-3 span.boosted-cp').lastChild.rawText),
+  // 雨天 'Rainy' 會正規化為 'rainy'；強風天 'Windy' 會正規化為 'windy' ... 諸此類推
+  boostedWeathers: bossItem.querySelectorAll('div.boss-3 .boss-weather img').map((node) =>
+    node.getAttribute('title')?.toLowerCase()
+  ),
+  // 由於圖片網址只會提供相對路徑，所以需要將 host URL 加入
+  boostedWeatherUrls: bossItem.querySelectorAll('div.boss-3 .boss-weather img').map((node) => 
+    new URL(node.getAttribute('src')!, url)
+  ),
+}));
+```
 
 ## 四、範例原始碼
 
-完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-leekduck
+更完整的範例原始碼紀錄於：https://github.com/pmgo-professor-willow/data-leekduck
+
+> ![](/day%20%23007/preview.png)
+> *完整範例的參考[輸出結果](https://github.com/pmgo-professor-willow/data-leekduck/blob/gh-pages/raid-bosses.json)*
