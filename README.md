@@ -12,7 +12,7 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 
 ---
 
-* [ ] [Day 02: 紙上談兵](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23002/README.md)
+* [x] [Day 02: 紙上談兵](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23002/README.md)
 * [ ] [Day 03: Figma 入門班 ①: 製作首個元件](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23003/README.md)
 * [ ] [Day 04: Figma 入門班 ②: 製作原型設計](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23004/README.md)
 
@@ -50,6 +50,6 @@ LINE 聊天機器人「Pokemon GO 維羅博士」，從 2021 年初上線至今�
 
 ---
 
-* [ ] [Day 28: [暫定] 從後台數據觀察用戶使用狀況](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23028/README.md)
-* [ ] [Day 29: [暫定] 關於用戶反饋與許願池的那些故事](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23029/README.md)
+* [ ] [Day 28: 從後台數據觀察用戶使用狀況](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23028/README.md)
+* [ ] [Day 29: 關於用戶反饋與許願池的那些故事](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23029/README.md)
 * [ ] [Day 30: 賽末心得](https://github.com/ithome-2022-ironman/be-a-pokemon-master/blob/master/day%20%23030/README.md)
